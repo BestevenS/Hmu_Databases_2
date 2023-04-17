@@ -49,7 +49,7 @@ HAVING total_likes = (SELECT MAX(likes_count) FROM (SELECT COUNT(*) AS likes_cou
 
 -- 8
 
-SELECT messages.KOD_MHNYMATOS, messages.SYG_MHNYMATOS, messages.periexomeno, COUNT(likes.message_id) AS total_likes
+SELECT messages.KOD_MHNYMATOS, messages.SYG_MHNYMATOS, messages.periexomeno, COUNT(likes.KOD_MHNYMATOS) AS total_likes
 FROM messages
 JOIN likes ON messages.KOD_MHNYMATOS = likes.KOD_MHNYMATOS
 GROUP BY messages.KOD_MHNYMATOS
@@ -65,7 +65,7 @@ WHERE messages.SYG_MHNYMATOS = 1;
 -- 10
 
 SELECT * FROM users
-WHERE id NOT IN (SELECT DISTINCT ONOMAXEIRISTH FROM FOLOWS);
+WHERE ONOMAXEIRISTH NOT IN (SELECT DISTINCT ONOMAXEIRISTH FROM FOLOWS);
 
 -- 11
 
