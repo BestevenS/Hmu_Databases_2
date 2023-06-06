@@ -46,6 +46,12 @@ CREATE TABLE appointments (
     appointment_date DATE NOT NULL,
     appointment_time TIME NOT NULL
 );
+
+CREATE TABLE patient_doctor_specialties (
+    patient_id INTEGER REFERENCES patients(id),
+    doctor_specialty specialty
+);
+
 -- Εισαγωγή δεδομένων στον πίνακα 'users'
 INSERT INTO users (id, first_name, last_name, email, phone) VALUES
 (1, 'Γιώργος', 'Παπαδόπουλος', 'giorgos@example.com', ARRAY['6912345678']),
@@ -74,3 +80,9 @@ INSERT INTO appointments (patient_id, doctor_id, appointment_date, appointment_t
 (3, 2, '2023-04-25', '11:00:00'),
 (4, 1, '2023-04-26', '10:00:00'),
 (4, 2, '2023-04-26', '12:00:00');
+
+INSERT INTO patient_doctor_specialties (patient_id, doctor_specialty) VALUES
+(3, 'pathologist'),
+(3, 'urologist'),
+(4, 'pathologist'),
+(4, 'urologist');
