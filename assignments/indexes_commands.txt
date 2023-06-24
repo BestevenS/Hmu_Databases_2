@@ -1,0 +1,1 @@
+db.my_collection.create_index([('my_field', 1)])
